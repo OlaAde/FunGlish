@@ -3,6 +3,8 @@ package com.example.adeogo.funglish;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,13 +18,16 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FragmentManager mManager;
+    private ActionBar mActionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        mActionBar = getSupportActionBar();
+        mManager = getSupportFragmentManager();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -32,6 +37,12 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ProfileFragment profileFragment = new ProfileFragment();
+        mActionBar.setTitle("Profile");
+        mManager.beginTransaction()
+                .add(R.id.main_frame_id, profileFragment)
+                .commit();
     }
 
     @Override
@@ -73,17 +84,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.action_profile) {
+            mActionBar.setTitle("Profile");
             // Handle the camera action
         } else if (id == R.id.action_score_dash_board) {
-
+            mActionBar.setTitle("Score DashBoard");
         } else if (id == R.id.action_challenge) {
-
+            mActionBar.setTitle("Challenge");
         } else if (id == R.id.action_video_chat_history) {
-
+            mActionBar.setTitle("Video Chat History");
         } else if (id == R.id.action_settings) {
-
-        } else if (id == R.id.nav_send) {
-
+            mActionBar.setTitle("Settings");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

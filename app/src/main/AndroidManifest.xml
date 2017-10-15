@@ -16,13 +16,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity1" />
-        <activity android:name=".WelcomeActivity2" />
-        <activity android:name=".WelcomeActivity3" />
+        <activity
+            android:name=".WelcomeActivity1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WelcomeActivity2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WelcomeActivity3"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AdvancedActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Lesson10Activity"
+            android:parentActivityName=".AdvancedActivity" />
+        <activity
+            android:name=".FirstTestActivity"
+            android:parentActivityName=".Lesson10Activity" />
+        <activity
+            android:name=".SecondTestActivity"
+            android:parentActivityName=".Lesson10Activity" />
+        <activity
+            android:name=".EndAdvancedActivity"
+            android:parentActivityName=".SecondTestActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ToeflActivity"></activity>
     </application>
 
 </manifest>
